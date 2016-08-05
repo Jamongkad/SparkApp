@@ -1,0 +1,29 @@
+<ion-view view-title="MatList" cache-view="false">
+    <ion-nav-buttons side="secondary">
+        <button class="button" on-tap="toggleReorder()">Reorder</button>
+    </ion-nav-buttons>
+  <ion-content>
+      <div ng-if="tasks.length > 0">
+          <ion-list show-reorder="shouldShowReorder">
+            <ion-item ng-repeat="task in tasks" class="item-remove-animate">
+                <ion-checkbox class="item-checkbox-left" ng-model="task.isFinished" on-tap="updateTaskStatus(task)">{{task.title}}</ion-checkbox>
+                <ion-option-button class="button-assertive" on-tap="deleteTask(task)">Delete</ion-option-button>
+                <ion-option-button class="button-positive" ui-sref="detail({taskId:task.id})">Edit</ion-option-button>
+                <ion-reorder-button class="ion-navicon" on-reorder="reorderList(task, $fromIndex, $toIndex)"></ion-reorder-button>
+            </ion-item>
+          </ion-list>
+     </div>
+     <div style="height:55px"></div>
+  </ion-content>
+ <div ng-if="tasks.length == 0">
+    <ion-content class="center">
+        <div class="row">
+            <div class="col">
+                <h4>Looks like you have no tasks for today!</h4>
+                <p>To edit or delete a task simply swipe left.</p>
+            </div>
+        </div>
+    </ion-content>
+ </div>
+  <button-footer></button-footer>
+</ion-view>

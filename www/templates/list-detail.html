@@ -1,0 +1,11 @@
+<ion-view view-title="Todo Detail">
+  <ion-content >
+      <div class="padding">
+          <label class="item item-input">
+              <input ng-model="task.title" placeholder="Enter your task" type="text">
+          </label> 
+          <ion-checkbox class="" ng-model="task.isfinished">Is Finished?</ion-checkbox>
+      </div>
+      <button ng-if="isAndroid" class="button button-full button-positive" ng-click="updateTask(task)">Update</button>
+  </ion-content>
+</ion-view>
